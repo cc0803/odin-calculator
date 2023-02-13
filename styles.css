@@ -12,7 +12,7 @@ body {
 
 .container {
     flex-basis: 400px;
-    min-height: 500px;
+    min-height: 600px;
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -34,4 +34,10 @@ body {
 #display {
     flex-basis: 400px;
     max-width: 400px;
+}
+
+.container .clear,
+.container .equals {
+    flex: auto;
+    max-width: 200px;
 }
