@@ -80,6 +80,12 @@ operators.forEach(operator => {
 });
 
 equal.addEventListener("click", () => {
+    if (a == ""){
+        return;
+    } else if (b == ""){
+        display.textContent = a;
+        return;
+    }
     result = operate(calculationOperator, a, b);
     display.textContent = Math.round(result * 100)/ 100;
     a = result;
