@@ -3,6 +3,7 @@ const operators = document.querySelectorAll(".operator");
 const equal = document.querySelector(".equals");
 const display = document.querySelector("#display");
 const clear = document.querySelector(".clear");
+const comma = document.querySelector(".comma");
 
 let a = "";
 let b = "";
@@ -24,7 +25,7 @@ function multiply(a, b){
 }
 
 function divide(a, b){
-    return Math.round(Number(a) / Number(b) * 100) / 100;
+    return Number(a) / Number(b);
 }
 
 function power(a, b){
@@ -68,17 +69,43 @@ numbers.forEach(number => {
 operators.forEach(operator => {
     operator.addEventListener("click", () => {
         firstNumber = false;
+        
+        if (b !== ""){
+            a = operate(calculationOperator, a, b);
+            display.textContent = Math.round(a * 100) / 100;
+            b = "";
+        }
         calculationOperator = operator.textContent;
     });
 });
 
 equal.addEventListener("click", () => {
     result = operate(calculationOperator, a, b);
-    display.textContent = result;
+    display.textContent = Math.round(result * 100)/ 100;
+    a = result;
+    b = "";
 })
 
 clear.addEventListener("click", () => {
     a = b = result = "";
     firstNumber = true;
     display.textContent = "";
+});
+
+comma.addEventListener("click", () => {
+    if (firstNumber){
+        if (a == ""){
+            a += "0.";
+        } else {
+            a += ".";
+        }
+        display.textContent = a;
+    } else {
+        if (b == ""){
+            b += "0.";
+        } else {
+            b += ".";
+        }
+        display.textContent = b;
+    }
 });
