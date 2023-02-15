@@ -86,10 +86,17 @@ equal.addEventListener("click", () => {
         display.textContent = a;
         return;
     }
-    result = operate(calculationOperator, a, b);
-    display.textContent = Math.round(result * 100)/ 100;
-    a = result;
-    b = "";
+    if (calculationOperator == "/" && b == "0"){
+        display.textContent = "Divinding by zero is not possible";
+        a = "";
+        b = "";
+        firstNumber = true;
+    } else {
+        result = operate(calculationOperator, a, b);
+        display.textContent = Math.round(result * 100)/ 100;
+        a = result;
+        b = "";
+    }
 })
 
 clear.addEventListener("click", () => {
